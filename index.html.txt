@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Morya Events</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+        }
+
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        .header {
+            text-align: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: #ff6600;
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #218838;
+        }
+
+        #otherField {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">Morya Events</div>
+
+    <form>
+        <label>Name</label>
+        <input type="text" name="name" pattern="[A-Za-z ]{3,}" required>
+
+        <label>Contact Number</label>
+        <input type="tel" name="contact" pattern="[0-9]{10}" placeholder="Enter 10 digit number" required>
+
+        <label>Address</label>
+        <textarea name="address" rows="3" required></textarea>
+
+        <label>Reference</label>
+        <input type="text" name="reference">
+
+        <label>Enquiry For</label>
+        <select id="enquiry" name="enquiry" onchange="showOtherField()" required>
+            <option value="">-- Select Event --</option>
+            <option>Wedding</option>
+            <option>Engagement Ceremony</option>
+            <option>Birthday</option>
+            <option>Dohal Jevan</option>
+            <option>Naming Ceremony</option>
+            <option>Baby Welcome</option>
+            <option>Entry</option>
+            <option>Car Decoration</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <div id="otherField">
+            <label>Enter Your Event</label>
+            <input type="text" id="otherText" name="otherText" placeholder="Enter your event">
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<script>
+function showOtherField() {
+    var enquiry = document.getElementById("enquiry").value;
+    var otherField = document.getElementById("otherField");
+
+    if (enquiry === "Other") {
+        otherField.style.display = "block";
+    } else {
+        otherField.style.display = "none";
+    }
+}
+</script>
+
+</body>
+</html>
